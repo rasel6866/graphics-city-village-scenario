@@ -1,0 +1,3091 @@
+/* S.M.Rasel
+   ID:22-48039-2
+   Project Title: " Dhaka 300 feet Highway City Life VS village life"
+
+   Features & Description: Computer Graphics is one the most exciting and rapidly growing field.This graphical design captures the vibrant essence of urban life along the Dhaka 300 feet highway.
+   Featuring moving clouds that reflect the changing sky, the scene comes alive with animated cars and buses navigating the bustling roadway.
+   The landscape is adorned with various buildings, including the prominent AIUB C-Building, and a serene mosque that adds a touch of tranquility.
+   Features:
+   1. Moving clouds.
+   2. Moving cars.
+   3. Moving Bus
+   4. Many Buildings
+   5. Sun set.
+   6. Some trees
+   7.One Mosque
+   8.AIUB C-Building
+   9.Moving Boats
+   10.River
+   11.HILLs
+   */
+
+
+
+#include <iostream>
+#include<GL/gl.h>
+#include <GL/glut.h>
+#include <math.h>
+
+
+
+float _moveCloudC = 0.0f;
+float _moveBusC =0.0f;
+float _angle1 = 0.0f; // For bus3 wheel rotation
+float _moveCloudV = 0.0f;
+float _moveboat = 0.0f;
+
+
+void initGL()
+ {
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Black and opaque
+}
+
+void sky ()
+
+{
+    ///backgroundsky
+glBegin(GL_POLYGON);
+
+        glColor3ub(153,255,255);
+      //glColor3ub(153,225,225);///sky color
+
+    glVertex2f(-400.0f, -150.0f);
+    glVertex2f(-400.0f, 350.0f);
+    glVertex2f(600.0f, 350.0f);
+    glVertex2f(600.0f, -150.0f);
+    glEnd();
+
+}
+
+///***************************************************cloud*************************************************
+
+
+void cloud()
+{
+glPushMatrix();
+    glTranslatef(_moveCloudC, 0.0f, 0.0f); // Move the cloud horizontally
+glBegin(GL_POLYGON);
+float x24 = 63.48f;
+float y24 = 258.27f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255, 255, 255);
+    float r = 29.08f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x24;
+    float y = r * sin(a) + y24;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glBegin(GL_POLYGON);
+float x25 = 57.69f;
+float y25 =281.94f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255,255, 255);
+    float r = 30.43f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x25;
+    float y = r * sin(a) + y25;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON);
+float x27 =87.68f;
+float y27=276.68f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255,255, 255);
+    float r = 32.89f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x27;
+    float y = r * sin(a) + y27;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+
+
+glBegin(GL_POLYGON);///2nd cloud
+float x31 =-178.309f;
+float y31=287.9678f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255, 255, 255);
+    float r =   21.75f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x31;
+    float y = r * sin(a) + y31;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON);
+float x32 =-149.24f;
+float y32 = 306.741f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255,255,255);
+    float r =   20.48f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x32;
+    float y = r * sin(a) + y32;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+ glBegin(GL_POLYGON);
+float x33 = -206.73;
+float y33 =308.08f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255, 255, 255); /// Set color to white
+    float r =20.48f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x33;
+    float y = r * sin(a) + y33;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON);
+float x35 = -175.66f;
+float y35 = 317.18f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255, 255, 255); // Set color to white
+
+    float r =18.59f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x35;
+    float y = r * sin(a) + y35;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glPopMatrix();
+//glFlush();
+}
+
+
+void sun()
+{
+
+glBegin(GL_POLYGON);
+float x23 = 325.93f;
+float y23 = 237.16f;
+for (int i = 0; i < 300; i++)
+{
+
+    glColor3ub(255,255,0);
+    float r = 29.16f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x23;
+    float y = r * sin(a) + y23;
+    glVertex2f(x, y);
+}
+glEnd();
+
+//glFlush();
+
+}
+///************************************Mosque's Gumbude*******************************************
+void buildings()
+{
+    glBegin(GL_POLYGON);
+float x25 = 551.005f;
+float y25 = 165.92f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(149,0,179);
+    float r = 45.18f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x25;
+    float y = r * sin(a) + y25;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(128, 255, 255); // Set the color to cyan (R=128, G=255, B=255)
+    glVertex2f(500.0f, 0.0f);
+    glVertex2f(500.0f, 160.0f);
+    glVertex2f(600.0f, 160.0f);
+    glVertex2f(600.0f, 0.0f);
+glEnd();
+
+ glBegin(GL_POLYGON);
+    glColor3ub(149,0,179); // Set the color to cyan (R=128, G=255, B=255)
+    glVertex2f(540.0f, 0.0f);
+    glVertex2f(540.0f, 50.0f);
+    glVertex2f(550.0f, 60.0f);
+    glVertex2f(560.0f, 50.0f);
+    glVertex2f(560.0f, 0.0f);
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(267, 255, 255);
+    glVertex2f(520.03f, 198.827f);
+    glVertex2f(520.0f, 280.0f);
+    glVertex2f(540.0f, 280.0f);
+    glVertex2f(540.05f, 209.76f);
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(149,0,179);
+    glVertex2f(520.0f, 280.0f);
+    glVertex2f(540.0f, 280.0f);
+    glVertex2f(530.0f, 300.0f);
+glEnd();
+
+
+
+glLineWidth(4.5);
+glBegin(GL_LINES);
+    glColor3ub(149,0,179);
+    glVertex2f(520.0f, 250.0f);
+    glVertex2f(540.0f, 250.0f);
+glEnd();
+
+
+glLineWidth(20.5);
+glBegin(GL_LINES);
+    glColor3ub(149, 0, 179);
+    glVertex2f(520.0f, 80.0f);
+    glVertex2f(520.0f, 100.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(149, 0, 179); // Set the color to RGB (149, 0, 179)
+    glVertex2f(580.0f, 100.0f);
+    glVertex2f(580.0f, 80.0f);
+glEnd();///End Mosqueeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+
+
+glBegin(GL_POLYGON);
+float x26 =72.27f;
+float y26 =140.32f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0,255,255);
+    float r =  71.09f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x26;
+    float y = r * sin(a) + y26;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glLineWidth(7.5);///AIUB___C***buildinggggggggggggggggg
+glBegin(GL_LINES);
+    glColor3ub(0, 153, 153); // Set the color to RGB (149, 0, 179)
+    glVertex2f(5.06f, 160.34f);
+    glVertex2f(135.0f, 160.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(0, 153, 153); // Set the color to RGB (149, 0, 179)
+    glVertex2f(12.10f, 135.97f);
+    glVertex2f(100.0f, 135.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(0, 153, 153); // Set the color to RGB (17, 100, 17)
+    glVertex2f(14.81f, 99.82f);
+    glVertex2f(50.0f, 100.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(0, 153, 153); // Set the color to RGB (149, 0, 179)
+    glVertex2f(15.59f, 180.81f);
+    glVertex2f(130.770f, 180.88f);
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(128,255,255); // Set the color to red (or any color you prefer)
+    glVertex2f(0.0f, 5.0f);
+    glVertex2f(5.0f, 270.0f);
+    glVertex2f(-20.0f, 280.0f);
+    glVertex2f(-20.0f, 0.0f);
+glEnd();
+
+
+    glBegin(GL_POLYGON);///building
+    glColor3ub(0, 153, 153); // Set the color (brown in this case)
+    glVertex2f(-10.0f, 0.0f);
+    glVertex2f(-10.0f, 140.0f);
+    glVertex2f(20.0f, 140.0f);
+    glVertex2f(20.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON);///window
+    glColor3ub(255, 255, 255);
+    glVertex2f(-5.0f, 135.0f);
+    glVertex2f(0.0f, 135.0f);
+    glVertex2f(0.0f, 130.0f);
+    glVertex2f(-5.0f, 130.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///2nd Draw window
+    glColor3ub(255, 255, 255); // Set the color (white in this case)
+    glVertex2f(10.0f, 135.0f);
+    glVertex2f(15.0f, 135.0f);
+    glVertex2f(15.0f, 130.0f);
+    glVertex2f(10.0f, 130.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///3rd windowwww
+    glColor3ub(255, 255, 255);
+    glVertex2f(-5.0f, 120.0f);
+    glVertex2f(0.0f, 120.0f);
+    glVertex2f(0.0f, 115.0f);
+    glVertex2f(-5.0f, 115.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON); /// 4th Start defining a polygon
+    glColor3ub(255, 255, 255);
+    glVertex2f(10.0f, 120.0f);
+    glVertex2f(15.0f, 120.0f);
+    glVertex2f(15.0f, 115.0f);
+    glVertex2f(10.0f, 115.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///5th Start defining a polygon
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-5.0f, 105.0f);
+    glVertex2f(0.0f, 105.0f);
+    glVertex2f(0.0f, 100.0f);
+    glVertex2f(-5.0f, 100.0f);
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(10.0f, 100.0f);
+    glVertex2f(15.0f, 100.0f);
+    glVertex2f(15.0f, 105.0f);
+    glVertex2f(10.0f, 105.0f);
+glEnd();
+glBegin(GL_POLYGON); // Start defining a polygon
+    glColor3ub(255, 255, 255);
+    glVertex2f(-5.0f, 90.0f);
+    glVertex2f(0.0f, 90.0f);
+    glVertex2f(0.0f, 85.0f);
+    glVertex2f(-5.0f, 85.0f);
+glEnd(); // End the polygon definition
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);  // Red color
+    glVertex2f(-5.0f, 90.0f);
+    glVertex2f(0.0f, 90.0f);
+    glVertex2f(0.0f, 85.0f);
+    glVertex2f(-5.0f, 85.0f);
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-5.0f, 60.0f);
+    glVertex2f(0.0f, 60.0f);
+    glVertex2f(0.0f, 55.0f);
+    glVertex2f(-5.0f, 55.0f);
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);  // Red color
+    glVertex2f(10.0f, 75.0f);
+    glVertex2f(15.0f, 75.0f);
+    glVertex2f(15.0f, 70.0f);
+    glVertex2f(10.0f, 70.0f);
+glEnd();
+
+
+  glBegin(GL_POLYGON);///2nd buildingggggg
+    glColor3ub(255, 0, 0);
+    glVertex2f(50.0f, 0.0f);
+    glVertex2f(50.0f, 70.0f);
+    glVertex2f(20.0f, 70.0f);
+    glVertex2f(20.0f, 35.0f);
+    glVertex2f(20.0f, 0.0f);
+glEnd();
+
+   glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(25.0f, 60.0f);
+    glVertex2f(35.0f, 60.0f);
+    glVertex2f(35.0f, 55.0f);
+    glVertex2f(25.0f, 55.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(35.0f, 45.0f);
+    glVertex2f(45.0f, 45.0f);
+    glVertex2f(45.0f, 40.0f);
+    glVertex2f(35.0f, 40.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(30.0f, 10.0f);
+    glVertex2f(40.0f, 10.0f);
+    glVertex2f(40.0f, 0.0f);
+    glVertex2f(30.0f, 0.0f);
+glEnd();///end 2nd buildingggggggggggggggggg
+
+
+
+  glBegin(GL_POLYGON);///3rd buildingggg
+    glColor3ub(0, 153, 153);
+    glVertex2f(100.0f, 0.0f);
+    glVertex2f(100.0f, 120.0f);
+    glVertex2f(50.0f, 120.0f);
+    glVertex2f(50.0f, 70.0f);
+    glVertex2f(50.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(60.0f, 110.0f);
+    glVertex2f(70.0f, 110.0f);
+    glVertex2f(70.0f, 100.0f);
+    glVertex2f(60.0f, 100.0f);
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255); // Red color (or any other color you prefer)
+    glVertex2f(90.0f, 80.0f);
+    glVertex2f(90.0f, 90.0f);
+    glVertex2f(80.0f, 90.0f);
+    glVertex2f(80.0f, 80.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255); // Green color (or any other color you prefer)
+    glVertex2f(60.0f, 70.0f);
+    glVertex2f(70.0f, 70.0f);
+    glVertex2f(70.0f, 60.0f);
+    glVertex2f(60.0f, 60.0f);
+glEnd();
+// Draw the polygon
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 0); // Yellow color (or any other color you prefer)
+    glVertex2f(70.0f, 0.0f);
+    glVertex2f(70.0f, 20.0f);
+    glVertex2f(80.0f, 20.0f);
+    glVertex2f(80.0f, 0.0f);
+glEnd();
+
+
+   glBegin(GL_POLYGON); ///4th buildinggggg Start defining a polygon
+    glColor3ub(51, 255, 53);
+    glVertex2f(100.0f, 0.0f);
+    glVertex2f(100.0f, 160.0f);
+    glVertex2f(135.0f, 160.0f);
+    glVertex2f(136.0f, 0.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255,102,255); // Set the color to white(-160, 250)
+    glVertex2f(-160.0f, 0.0f);
+    glVertex2f(-160.0f, 250.0f);
+    glVertex2f(-120.0f, 250.0f);
+    glVertex2f(-120.0f, 0.0f);
+glEnd();
+
+
+
+  glBegin(GL_POLYGON); // 5thStart defining the polygon
+    glColor3ub(0, 204, 204);
+    glVertex2f(-200.0f, 0.0f);
+    glVertex2f(-200.0f, 220.0f);
+    glVertex2f(-140.0f, 220.0f);
+    glVertex2f(-140.0f, 0.0f);
+glEnd();
+
+
+glLineWidth(3.5); // Set line width
+
+// Draw the line between the specified points
+glBegin(GL_LINES);///5th building designnnnnnnnn
+    glColor3ub(255, 255, 51);
+    glVertex2f(-180.0f, 200.0f);
+    glVertex2f(-140.0f, 200.0f);
+glEnd();
+
+glLineWidth(3.5); // Set line width
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-180.0f, 160.0f);
+    glVertex2f(-140.0f, 160.0f);
+glEnd();
+glLineWidth(3.5); // Set line width
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 51);
+    glVertex2f(-190.0f, 120.0f);
+    glVertex2f(-140.0f, 120.0f);
+glEnd();
+
+glLineWidth(3.5); // Set line width
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-190.0f, 80.0f);
+    glVertex2f(-140.0f, 80.0f);
+glEnd();
+
+glLineWidth(3.5); // Set line width
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 51); // Set the color to white
+    glVertex2f(-195.0f, 40.0f);
+    glVertex2f(-140.0f, 40.0f);
+glEnd();
+
+
+
+  glBegin(GL_POLYGON); ///6thhhhhhhhhhhhhhhhhhhhhhStart defining the polygon
+      glColor3ub(255, 255, 51);
+    glVertex2f(-120.0f, 0.0f);
+    glVertex2f(-120.0f, 260.0f);
+    glVertex2f(-80.0f, 260.0f);
+    glVertex2f(-80.0f, 0.0f);
+glEnd();
+
+ glLineWidth(4.5f);
+
+    // Draw the line from (-115, 240) to (-110, 240)
+    glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to magenta (RGB: 255, 0, 255)
+    glVertex2f(-115.0f, 240.0f);
+    glVertex2f(-110.0f, 240.0f);
+    glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-90.0f, 240.0f);
+    glVertex2f(-85.0f, 240.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-115.0f, 190.0f);
+    glVertex2f(-110.0f, 190.0f);
+glEnd();
+
+glBegin(GL_LINES);
+     glColor3ub(255, 255, 255);
+    glVertex2f(-90.0f, 190.0f);
+    glVertex2f(-85.0f, 190.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-115.0f, 140.0f);
+    glVertex2f(-110.0f, 140.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-90.0f, 140.0f);
+    glVertex2f(-85.0f, 140.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-115.0f, 100.0f);
+    glVertex2f(-110.0f, 100.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-90.0f, 100.0f);
+    glVertex2f(-85.0f, 100.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-115.0f, 40.0f);
+    glVertex2f(-110.0f, 40.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-90.0f, 40.0f);
+    glVertex2f(-85.0f, 40.0f);
+glEnd();
+
+
+  glBegin(GL_POLYGON); ///7th white color buildingggggggg
+    glColor3ub(225, 225, 225); // Set the color to white
+    glVertex2f(-20.0f, 0.0f);
+    glVertex2f(-20.0f, 220.0f);
+    glVertex2f(-60.0f, 220.0f);
+    glVertex2f(-60.0f, 0.0f);
+glEnd();
+
+glLineWidth(1.5f);
+
+
+    glBegin(GL_LINES);
+    glColor3ub(171,39,79); // Set the color to magenta (RGB: 255, 0, 255)
+    glVertex2f(-60.0f, 160.0f);
+    glVertex2f(-20.0f, 160.0f);
+    glEnd();
+
+    glBegin(GL_LINES);
+    glColor3ub(255, 0, 255);
+    glVertex2f(-60.0f, 100.0f);
+    glVertex2f(-20.0f, 100.0f);
+    glEnd();
+
+
+     glBegin(GL_LINES);
+    glColor3ub(255, 0, 255); // Set the color to magenta (RGB: 255, 0, 255)
+    glVertex2f(-20.0f, 50.0f);
+    glVertex2f(-60.0f, 50.0f);
+    glEnd();
+
+
+glBegin(GL_POLYGON); //8th Start defining a polygon
+    glColor3ub(0, 102, 102);
+    glVertex2f(-240.0f, 0.0f);
+    glVertex2f(-200.0f, 0.0f);
+    glVertex2f(-200.0f, 250.0f);
+    glVertex2f(-240.0f, 250.0f);
+glEnd();
+glLineWidth(4.5);
+
+
+ glBegin(GL_LINES);///building lineeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 240.0f);
+    glVertex2f(-220.0f, 240.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 240.0f);
+    glVertex2f(-220.0f, 240.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 220.0f);
+    glVertex2f(-210.0f, 220.0f);
+glEnd();
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 200.0f);
+    glVertex2f(-210.0f, 200.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 180.0f);
+    glVertex2f(-210.0f, 180.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 160.0f);
+    glVertex2f(-210.0f, 160.0f);
+glEnd();
+
+
+
+  glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 140.0f);
+    glVertex2f(-210.0f, 140.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+
+glLineWidth(4.5); // Set line width (adjust as needed)
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-240.0f, 100.0f);
+    glVertex2f(-210.0f, 100.0f);
+glEnd();
+glLineWidth(4.5); // Set line width (adjust as needed)
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-240.0f, 80.0f);
+    glVertex2f(-210.0f, 80.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-240.0f,50.0f);
+    glVertex2f (-210.0f,50.0f);
+glEnd();
+
+
+glLineWidth(4.5); // Set line width (adjust as needed)
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-240.0f, 20.0f);
+    glVertex2f(-205.0f, 20.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ////9th
+    glColor3ub(0, 128, 255); // Set the color to blue
+    glVertex2f(210.0f, 0.0f);
+    glVertex2f(210.0f, 230.0f);
+    glVertex2f(220.0f, 220.0f);
+    glVertex2f(225.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///10th
+    glColor3ub(0, 204, 204); // Set the color to blue
+    glVertex2f(140.0f, 0.0f);
+    glVertex2f(140.0f, 240.0f);
+    glVertex2f(160.0f, 260.0f);
+    glVertex2f(166.16f, 0.0f);
+glEnd();
+
+
+
+  glBegin(GL_POLYGON);///11th
+    glColor3ub(153, 255, 51); // Set the color to blue
+    glVertex2f(170.0f, 0.0f);
+    glVertex2f(168.0f, 200.0f);
+    glVertex2f(180.0f, 180.0f);
+    glVertex2f(184.0f, 0.0f);
+glEnd();
+
+
+  glBegin(GL_POLYGON); ///12th Start defining a new polygon
+    glColor3ub(255, 165, 0);
+    glVertex2f(186.0f, 0.0f);
+    glVertex2f(180.0f, 270.0f);
+    glVertex2f(200.0f, 290.0f);
+    glVertex2f(208.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///13th Start defining the polygon (quadrilateral)
+    glColor3ub(0, 204, 204); // Set the color (brown shade)
+
+
+    glVertex2f(-260.0f, 0.0f);
+    glVertex2f(-258.0f, 200.0f);
+    glVertex2f(-244.0f, 220.0f);
+    glVertex2f(-242.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///14th Start defining the polygon (quadrilateral)
+    glColor3ub(255, 102, 178); // Set the color (brown shade)
+
+
+    glVertex2f(-275.0f, 0.0f);
+    glVertex2f(-270.0f, 220.0f);
+    glVertex2f(-260.0f, 220.0f);
+    glVertex2f(-262.0f, 0.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON); ///15th Start defining the polygon (quadrilateral)
+    glColor3ub(0, 204, 204); // Set the color (brown shade)
+
+
+    glVertex2f(-305.0f, 0.0f);
+    glVertex2f(-300.0f, 285.0f);
+    glVertex2f(-280.0f, 240.0f);
+    glVertex2f(-280.0f, 0.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON); ///16th  building
+    glColor3ub(0, 255, 255); // Set color to red
+    glVertex2f(235.0f, -5.0f);
+    glVertex2f(240.0f, 200.0f);
+    glVertex2f(260.0f, 200.0f);
+    glVertex2f(260.0f, 0.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON); ///17th Building polygon
+    glColor3ub(255, 0, 0); // Set color to red (or change as needed)
+    glVertex2f(280.0f, 0.0f);
+    glVertex2f(280.0f, 160.0f);
+    glVertex2f(300.0f, 160.0f);
+    glVertex2f(300.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///18th Building polygon
+    glColor3ub(102,255,230); // Set color to red (or change as needed)
+    glVertex2f(340.0f, 0.0f);
+    glVertex2f(340.0f, 180.0f);
+    glVertex2f(380.0f, 180.0f);
+    glVertex2f(380.0f, 0.0f);
+glEnd();
+
+
+glLineWidth(10.5f); // Set the line width to 10.5
+
+glBegin(GL_LINES);
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(370.0f, 60.0f);
+    glVertex2f(370.0f, 50.0f);
+glEnd();
+
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(350.0f, 45.0f);
+    glVertex2f(350.0f, 35.0f);
+glEnd();
+
+glLineWidth(10.5f); // Set the line width to 10.5
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(350.0f, 105.0f);
+    glVertex2f(350.0f, 95.0f);
+glEnd();
+
+
+glLineWidth(10.5f); // Set the line width to 10.5
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(370.0f, 110.0f);
+    glVertex2f(370.0f, 100.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(350.0f, 150.0f);
+    glVertex2f(350.0f, 140.0f);
+glEnd();
+
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(370.0f, 150.0f);
+    glVertex2f(370.0f, 140.0f);
+glEnd();
+
+
+  glBegin(GL_POLYGON); ///19th Building polygon
+    glColor3ub(153,230,0); // Set color to red (or change as needed)
+    glVertex2f(400.0f, 0.0f);
+    glVertex2f(400.0f, 220.0f);
+    glVertex2f(440.0f, 220.0f);
+    glVertex2f(440.0f, 0.0f);
+  glEnd();
+
+glLineWidth(8.5f);
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(400.0f, 160.0f);
+    glVertex2f(440.0f, 160.0f);
+glEnd();
+
+
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(400.0f, 100.0f);
+    glVertex2f(440.0f, 100.0f);
+glEnd();
+
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(135, 206, 235); // Set the color to sky blue (RGB: 135, 206, 235)
+    glVertex2f(400.0f, 40.0f);
+    glVertex2f(440.0f, 40.0f);
+glEnd();
+
+
+
+ glBegin(GL_POLYGON); ///20th Building polygon
+    glColor3ub(255,153,255); // Set color to blue (or change as needed)
+    glVertex2f(460.0f, 0.0f);
+    glVertex2f(460.0f, 300.0f);
+    glVertex2f(500.0f, 300.0f);
+    glVertex2f(500.0f, 0.0f);
+glEnd();
+
+glLineWidth(2.5f); // Set the line width
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(460.0f, 250.0f);
+    glVertex2f(485.0f, 250.0f);
+glEnd();
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(490.0f, 200.0f);
+    glVertex2f(460.0f, 200.0f);
+glEnd();
+
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(490.0f, 150.0f);
+    glVertex2f(460.0f, 150.0f);
+glEnd();
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(495.0f, 100.0f);
+    glVertex2f(460.0f, 100.0f);
+glEnd();
+
+
+glBegin(GL_LINES); // Start drawing a line
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(460.0f, 50.0f);
+    glVertex2f(495.0f, 50.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON); ///21th Drawing a building
+    glColor3ub(0, 255, 0); // Set color to green (or change as needed)
+    glVertex2f(320.0f, 0.0f);
+    glVertex2f(320.0f, 200.0f);
+    glVertex2f(340.0f, 200.0f);
+    glVertex2f(340.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON); // Drawing a building
+    glColor3ub(0,255,128);
+    glVertex2f(380.0f, 0.0f);
+    glVertex2f(380.0f, 280.0f);
+    glVertex2f(400.0f, 280.0f);
+    glVertex2f(400.0f, 0.0f);
+glEnd();
+
+}
+
+void trees()
+{
+
+glBegin(GL_POLYGON);///treees
+    glColor3ub(51, 102,0);
+    glVertex2f(150.0f, 0.0f);
+    glVertex2f(150.0f, 20.0f);
+    glVertex2f(155.0f, 20.0f);
+    glVertex2f(155.0f, 0.0f);
+glEnd();
+
+ glBegin(GL_POLYGON);
+    glColor3ub(0, 204, 0); // Gray color (adjust if needed)
+    glVertex2f(150.0f, 30.0f);
+    glVertex2f(140.0f, 20.0f);
+    glVertex2f(170.0f, 20.0f);
+    glVertex2f(160.0f, 30.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 204, 0);
+    glVertex2f(155.0f, 45.0f);
+    glVertex2f(138.0f, 30.0f);
+    glVertex2f(170.0f, 30.0f);
+glEnd();
+
+////2nd tree
+glBegin(GL_POLYGON);
+    glColor3ub(102, 0, 0);
+    glVertex2f(190.0f, 0.0f);
+    glVertex2f(190.0f, 30.0f);
+    glVertex2f(192.0f, 30.0f);
+    glVertex2f(192.0f, 0.0f);
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0);
+    glVertex2f(180.0f, 35.0f);
+    glVertex2f(172.0f, 30.0f);
+    glVertex2f(210.0f, 30.0f);
+    glVertex2f(200.0f, 35.0f);
+glEnd();
+
+glBegin(GL_POLYGON);///2ndtrees
+    glColor3ub(0, 255, 0); // Color (adjust if needed)
+    glVertex2f(175.0f, 35.0f);
+    glVertex2f(205.0f, 35.0f);
+    glVertex2f(192.0f, 70.0f);
+glEnd();
+
+glBegin(GL_POLYGON); ///3rd  treeeeeeee Start defining a new polygon
+    glColor3ub(255, 255, 255); // Set the color to red (or any color you prefer)
+    glVertex2f(-314.0f, -40.0f);
+    glVertex2f(-312.6f, -4.0f);
+    glVertex2f(-313.0f, -28.0f);
+    glVertex2f(-314.0f, -28.0f);
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+      glColor3ub(102, 51, 0);
+    glVertex2f(-314.0f, -40.0f);
+    glVertex2f(-314.0f, -28.0f);
+    glVertex2f(-313.0f, -28.0f);
+    glVertex2f(-313.0f, -40.0f);
+glEnd(); // End the polygon
+
+glBegin(GL_POLYGON); ///3rdddddddddddddddStart defining the polygon (rectangle)
+    glColor3ub(102, 51, 0); // Set the color (brown shade)
+
+
+    glVertex2f(-310.0f, -40.0f);
+    glVertex2f(-310.0f, -28.0f);
+    glVertex2f(-309.0f, -28.0f);
+    glVertex2f(-309.0f, -40.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON); // Start defining the polygon (quadrilateral)
+    glColor3ub(0,153, 0);
+
+
+    glVertex2f(-314.0f, -22.0f);
+    glVertex2f(-320.0f, -28.0f);
+    glVertex2f(-300.2f, -28.0f);
+    glVertex2f(-305.0f, -22.0f);
+glEnd(); // End the polygon definition
+
+glBegin(GL_POLYGON); // Start defining the polygon (triangle)
+    glColor3ub(0,153, 0); // Set the color (brown shade)
+
+    // Define the three vertices of the triangle
+    glVertex2f(-310.0f, -12.0f); // Top vertex
+    glVertex2f(-320.0f, -22.0f); // Bottom-left vertex
+    glVertex2f(-298.0f, -22.0f); // Bottom-right vertex
+glEnd(); // End the polygon definition
+
+
+glBegin(GL_POLYGON); ///4thhhhhhhhhhhhhhhhhhhhh treeeeeeeeeeee Start defining the polygon (quadrilateral)
+    glColor3ub(102, 51, 0); // Set the color (brown shade)
+
+    // Define the four vertices of the quadrilateral
+    glVertex2f(-110.0f, -40.0f); // Bottom-left corner
+    glVertex2f(-110.0f, -20.0f); // Top-left corner
+    glVertex2f(-108.0f, -20.0f); // Top-right corner
+    glVertex2f(-108.0f, -40.0f); // Bottom-right corner
+glEnd(); // End the polygon definition
+
+glBegin(GL_POLYGON); // Start defining the polygon (quadrilateral)
+    glColor3ub(0,153, 0); // Set the color (brown shade)
+
+    // Define the four vertices of the quadrilateral
+    glVertex2f(-114.0f, -12.0f);  // Top-left corner
+    glVertex2f(-120.0f, -20.0f);  // Bottom-left corner
+    glVertex2f(-100.0f, -20.0f);  // Bottom-right corner
+    glVertex2f(-106.0f, -12.0f);  // Top-right corner
+glEnd(); // End the polygon definition
+
+
+glBegin(GL_POLYGON); // Start defining the polygon (triangle)
+    glColor3ub(0,153, 0); // Set the color (brown shade)
+
+    // Define the three vertices of the triangle
+    glVertex2f(-110.0f, -2.0f);   // Top vertex
+    glVertex2f(-124.0f, -12.0f);  // Bottom-left vertex
+    glVertex2f(-96.0f, -12.0f);   // Bottom-right vertex
+glEnd(); // End the polygon definition
+
+
+glBegin(GL_POLYGON);///treeeeeeeeeeeeeeeeeesssssssssssssssssssssssssss // Start defining the polygon (rectangle in this case)
+    glColor3ub(102, 51, 0); // Set the color (brown shade)
+
+    // Define the four vertices of the rectangle
+    glVertex2f(300.0f, -40.0f); // Bottom-left corner
+    glVertex2f(300.0f, -20.0f); // Top-left corner
+    glVertex2f(305.0f, -20.0f); // Top-right corner
+    glVertex2f(305.0f, -40.0f); // Bottom-right corner
+glEnd(); // End the polygon definition
+
+
+glBegin(GL_TRIANGLES); // Start defining the triangle
+    glColor3ub(0, 128, 0); // Set the color to green (RGB values: 0, 128, 0)
+
+    // Define the three vertices of the triangle (tree top)
+    glVertex2f(290.0f, -20.0f); // Left corner of the triangle
+    glVertex2f(315.0f, -20.0f); // Right corner of the triangle
+    glVertex2f(300.0f, 15.0f);  // Top corner of the triangle
+glEnd(); // End the triangle definition
+
+
+glBegin(GL_POLYGON); ///6th treesssssssssss Start defining the polygon (rectangle in this case)
+    glColor3ub(102, 51, 0); // Set the color (brown shade)
+
+    // Define the four vertices of the rectangle
+    glVertex2f(70.0f, -40.0f); // Bottom-left corner
+    glVertex2f(70.0f, -15.0f); // Top-left corner
+    glVertex2f(75.0f, -15.0f); // Top-right corner
+    glVertex2f(75.0f, -40.0f); // Bottom-right corner
+glEnd(); // End the polygon definition
+
+
+glBegin(GL_TRIANGLES); // Start defining the triangle
+    glColor3ub(0, 128, 0); // Set the color to green (RGB values: 0, 128, 0)
+
+    // Define the three vertices of the triangle (tree foliage)
+    glVertex2f(55.0f, -15.0f); // Left corner of the triangle
+    glVertex2f(70.0f, 40.0f);  // Top corner of the triangle
+    glVertex2f(90.0f, -15.0f); // Right corner of the triangle
+glEnd(); // End the triangle definition
+
+glLineWidth(12.5);
+glBegin(GL_LINES); ///7th trees
+glColor3ub(102, 67, 33);  // Deep wood color (R:102, G:67, B:33)
+glVertex2f(-340.0f, 0.0f);
+glVertex2f(-340.0f, 120.0f);
+glEnd();
+
+
+glLineWidth(9.5);
+glBegin(GL_LINES);
+glColor3ub(102, 67, 33);  // Deep wood color (R:102, G:67, B:33)
+glVertex2f(-340.0f, 120.0f);
+glVertex2f(-320.0f, 160.0f);
+glEnd();
+
+glBegin(GL_LINES);
+glColor3ub(102, 67, 33);  // Deep wood color (R:102, G:67, B:33)
+glVertex2f(-340.0f, 120.0f);
+glVertex2f(-350.0f, 140.0f);
+glEnd();
+
+
+glBegin(GL_POLYGON); // wheel
+float x32 =-361.17f;
+float y32 = 146.0781676217262f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0, 255, 0);
+    float r =    24.26f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x32;
+    float y = r * sin(a) + y32;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glBegin(GL_POLYGON);
+float x33 =-317.94f;
+float y33 = 169.437;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0, 255, 0);
+    float r =    26.31f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x33;
+    float y = r * sin(a) + y33;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON);
+float x34 =-334.67f;
+float y34 = 189.31f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0, 255, 0);
+    float r = 36.78f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x34;
+    float y = r * sin(a) + y34;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON);
+float x35 =-373.033f;
+float y35 =178.532f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0, 255, 0);
+    float r = 24.8f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x35;
+    float y = r * sin(a) + y35;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+}
+
+void newroad2()
+{
+
+    glBegin(GL_POLYGON);
+    glColor3ub(96, 96,96);
+    glVertex2f(-400.0f, -150.0f);
+    glVertex2f(-400.0f, -400.0f);
+    glVertex2f(600.0f, -400.0f);
+    glVertex2f(600.0f, -150.0f);
+glEnd();
+
+
+glLineWidth(8.5);
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(-300.0f, -300.0f);
+    glVertex2f(-200.0f, -300.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(-100.0f, -300.0f);
+    glVertex2f(0.0f, -300.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(100.0f, -300.0f);
+    glVertex2f(200.0f, -300.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(300.0f, -300.0f);
+    glVertex2f(400.0f, -300.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white (RGB: 255, 255, 255)
+    glVertex2f(500.0f, -300.0f);
+    glVertex2f(600.0f, -300.0f);
+glEnd();
+
+}
+
+
+void breanch()
+{
+    glLineWidth(2.5);
+
+glBegin(GL_LINES);
+    glColor3ub(102, 51, 0);
+
+
+    glVertex2f(-240.0f, -40.0f);
+    glVertex2f(-240.0f, -30.0f);
+glEnd();
+
+
+glLineWidth(2.5);
+
+glBegin(GL_LINES); // Start defining the line
+    glColor3ub(102, 51, 0); // Set the color to yellow (RGB values: 255, 255, 0)
+
+
+    glVertex2f(-190.0f, -30.0f);
+    glVertex2f(-190.0f, -40.0f);
+glEnd();
+
+
+
+
+glLineWidth(4.5);
+
+glBegin(GL_LINES);
+    glColor3ub(102, 51, 0);
+
+    // Define the two endpoints of the line
+    glVertex2f(-245.0f, -30.0f); // Starting point of the line
+    glVertex2f(-185.0f, -30.0f);
+glEnd();
+
+
+
+
+glLineWidth(4.5);
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 0);
+
+
+    glVertex2f(-240.0f, -25.0f);
+    glVertex2f(-190.0f, -25.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 0);
+
+
+    glVertex2f(-240.0f, -20.0f);
+    glVertex2f(-190.0f, -20.0f);
+glEnd();
+
+
+
+ glLineWidth(4.5);
+
+glBegin(GL_LINES);
+    glColor3ub(102, 51, 0);
+
+
+    glVertex2f(-240.0f, -15.0f);
+    glVertex2f(-190.0f, -15.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+glBegin(GL_LINES);
+    glColor3ub(102, 51, 0);
+
+
+    glVertex2f(-240.0f, -10.0f);
+    glVertex2f(-190.0f, -10.0f);
+glEnd();
+
+glBegin(GL_LINES);///2nd breanchcccccccccccccccccccccccccccc
+glColor3ub(102, 51, 0);
+
+glVertex2f(140.0f, -40.0f);
+glVertex2f(140.0f, -26.0f);
+
+glEnd();
+
+glBegin(GL_LINES);
+glColor3ub(102, 51, 0);
+
+glVertex2f(240.0f, -25.0f);
+glVertex2f(240.0f, -40.0f);
+
+glEnd();
+
+
+glBegin(GL_LINES);
+glColor3ub(255, 0, 0);
+
+glVertex2f(140.0f, -18.0f);
+glVertex2f(240.0f, -18.0f);
+
+glEnd();
+
+
+glBegin(GL_LINES);
+glColor3ub(102, 51, 0);
+
+glVertex2f(126.0f, -26.0f);
+glVertex2f(250.0f, -26.0f);
+
+glEnd();
+
+glBegin(GL_LINES);
+glColor3ub(255, 255, 0);
+
+glVertex2f(140.0f, -10.0f);
+glVertex2f(240.0f, -10.0f);
+
+glEnd();
+
+
+glBegin(GL_LINES);
+glColor3ub(102, 51, 0);
+
+glVertex2f(145.0f, -5.0f);
+glVertex2f(145.0f, -26.0f);
+
+glEnd();
+glBegin(GL_LINES);
+glColor3ub(102, 51, 0);
+
+glVertex2f(235.0f, -5.0f);
+glVertex2f(235.0f, -26.0f);
+
+glEnd();
+
+
+}
+
+
+void bus2()
+
+
+{
+/*glBegin(GL_POLYGON);///2nd bussssssssssssssssssssssss
+    glColor3ub(149, 0, 179);
+    glVertex2f(-170.0f, -130.0f);
+    glVertex2f(-60.0f, -130.0f);
+    glVertex2f(-70.0f, -90.0f);
+    glVertex2f(-170.0f, -90.0f);
+glEnd();
+
+glBegin(GL_POLYGON); // wheel
+float x28 =-150.0f;
+float y28 =-130.0f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0, 0, 0); // Wheel color: black
+    float r =  10.53f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x28;
+    float y = r * sin(a) + y28;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glBegin(GL_POLYGON); // wheel
+float x29 =-125.0f;
+float y29= -130.0f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0, 0, 0); // Wheel color: black
+    float r =   10.84f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x29;
+    float y = r * sin(a) + y29;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glBegin(GL_POLYGON); // wheel
+float x30 = -81.54f;
+float y30 = -130.0f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(0, 0, 0); // Wheel color: black
+    float r =  11.31f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x30;
+    float y = r * sin(a) + y30;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+
+glLineWidth(8.5);
+
+glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+    glVertex2f(-150.0f, -105.0f);
+    glVertex2f(-150.0f, -95.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255,255,255); // Set the color to RGB (149, 0, 179)
+    glVertex2f(-130.0f, -105.0f);
+    glVertex2f(-130.0f, -95.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+    glVertex2f(-110.0f, -95.0f);
+    glVertex2f(-110.0f, -105.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(255,255,255);
+    glVertex2f(-90.0f, -95.0f);
+    glVertex2f(-90.0f, -105.0f);
+glEnd();*/
+
+
+//glFlush();
+}
+
+void drawWheel(float x_center, float y_center, float radius)
+{
+    glPushMatrix();
+    glTranslatef(x_center, y_center, 0);  // Position the wheel
+    glRotatef(_angle1, 0.0f, 0.0f, 1.0f); // Rotate the wheel
+    glBegin(GL_POLYGON);
+    for (int i = 0; i < 300; i++) {
+        glColor3ub(0, 0, 0); // Wheel color: black
+        float pi = 3.1416f;
+        float angle = (i * 2 * pi) / 300;
+        float x = radius * cos(angle);
+        float y = radius * sin(angle);
+        glVertex2f(x, y);
+    }
+    glEnd();
+    glPopMatrix();
+}
+
+float position1 = 0.0f;
+float speed1 = 2.0f;
+void bus3()
+
+{
+
+glPushMatrix();
+   glTranslatef(position1,0.0f, 0.0f); // Move the bus along the x-axis
+//    glTranslatef(bx,0,0);
+  glBegin(GL_POLYGON); ///3rd busssssssssssssss
+        glColor3ub(255, 255, 255); // Set color to white
+        glVertex2f(60.0f, -370.0f);
+        glVertex2f(230.0f, -370.0f);
+        glVertex2f(200.0f, -290.0f);
+        glVertex2f(60.0f, -290.0f);
+    glEnd();
+
+
+
+glLineWidth(12.5);
+glBegin(GL_LINES);
+        glColor3ub(255, 0, 0);
+        glVertex2f(125.0f, -300.0f);
+        glVertex2f(125.0f, -340.0f);
+    glEnd();
+
+
+
+     glBegin(GL_LINES);
+        glColor3ub(255, 0, 0);
+        glVertex2f(105.0f, -320.0f);
+        glVertex2f(145.0f, -320.0f);
+    glEnd();
+
+
+glBegin(GL_POLYGON);
+        glColor3ub(0, 204, 204);
+        glVertex2f(180.0f, -310.0f);
+        glVertex2f(200.0f, -310.0f);
+        glVertex2f(200.0f, -330.0f);
+        glVertex2f(180.0f, -330.0f);
+    glEnd();
+
+    // Draw the bus wheels using the drawWheel() function
+    drawWheel(95.0f, -370.0f, 24.4f); // First wheel
+    drawWheel(180.0f, -370.0f, 25.4f); // Second wheel
+
+    glPopMatrix();
+
+
+}
+
+
+
+
+void road ()
+{
+
+
+///main road black  roadddddddd Draw the polygon
+     glBegin(GL_POLYGON);
+    glColor3ub(32, 32, 32);
+    glVertex2f(-350.0f, 0.0f);
+    glVertex2f(600.0f, 0.0f);
+    glVertex2f(600.0f, -150.0f);
+    glVertex2f(-350.0f, -150.0f);
+glEnd();
+
+    glColor3ub(32, 32, 32);///2nd parts black roaadddddddddd
+    glBegin(GL_POLYGON);
+    glVertex2f(-400.0f, -50.0f);
+    glVertex2f(-350.0f, -50.0f);
+    glVertex2f(-350.0f, -150.0f);
+    glVertex2f(-400.0f, -150.0f);
+    glEnd();
+
+
+
+  glBegin(GL_POLYGON); ///green grounddddddddd Start defining a polygon
+   glColor3ub(0, 255, 0);
+    glVertex2f(-350.0f, -50.0013f);
+    glVertex2f(-350.0f, 0.0f);
+    glVertex2f(600.0f, 0.0f);
+    glVertex2f(600.0f, -40.0f);
+glEnd();
+
+
+
+glColor3ub(0, 255, 0);///green 2nd partssssssssssss
+
+
+    glBegin(GL_POLYGON);
+    glVertex2f(-400.0f, 0.0f);
+    glVertex2f(-350.0f, 0.0f);
+    glVertex2f(-350.0f, -40.0f);
+    glVertex2f(-400.0f, -40.0f);
+    glEnd();
+
+
+
+   glBegin(GL_POLYGON); ///gayyblackkkkkmid blackkkkkkkkkkkkkkkkStart defining a polygon
+   glColor3ub(160, 160, 160);
+   glVertex2f(600.0f, -50.0f);
+   glVertex2f(600.0f, -40.0f);
+   glVertex2f(-350.0f, -40.0f);
+   glVertex2f(-350.0f, -50.0f);
+glEnd(); // End the polygon
+
+ glColor3ub(160, 160, 160);///2nd partsss of gayblack colorrrrrrrr
+    glBegin(GL_POLYGON);
+    glVertex2f(-400.0f, -40.0f);
+    glVertex2f(-400.0f, -50.0f);
+    glVertex2f(-350.0f, -50.0f);
+    glVertex2f(-350.0f, -40.0f);
+    glEnd();
+
+
+
+
+
+
+glBegin(GL_LINES);///Beside road lineee dotttttttttttt
+    glColor3ub(255, 255, 255);
+    glVertex2f(460.0f, -50.0f);
+    glVertex2f(460.0f, -40.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(350.0f, -50.0f);
+    glVertex2f(350.0f, -40.0f);
+glEnd();
+
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(100.0f, -50.0f);
+    glVertex2f(100.0f, -40.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(20.0f, -50.0f);
+    glVertex2f(20.0f, -40.0f);
+glEnd();
+
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(180.0f, -40.0f);
+    glVertex2f(180.0f, -50.0f);
+glEnd();
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(240.0f, -40.0f);
+    glVertex2f(240.0f, -50.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(180.0f, -40.0f);
+    glVertex2f(180.0f, -50.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(100.0f, -40.0f);
+    glVertex2f(100.0f, -50.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(20.0f, -40.0f);
+    glVertex2f(20.0f, -50.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-60.0f, -40.0f);
+    glVertex2f(-60.0f, -50.0f);
+
+
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-140.0f, -40.0f);
+    glVertex2f(-140.0f, -50.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-260.0f, -40.0f);
+    glVertex2f(-260.0f, -50.0f);
+glEnd();
+
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255); // Set the color to white
+    glVertex2f(-320.0f, -40.0f);
+    glVertex2f(-320.0f, -50.0f);
+glEnd();
+
+
+   ///Main road Mid dot lineeeeeeeeeeeee11111111
+   glLineWidth(4.5); // Set line width
+
+   glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-340.0f, -80.0f);
+    glVertex2f(-390.0f, -80.0f);
+glEnd();
+
+
+   glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-300.0f, -80.0f);
+    glVertex2f(-340.0f, -80.0f);
+glEnd();
+
+
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-260.0f, -80.0f);
+    glVertex2f(-220.0f, -80.0f);
+glEnd();
+
+glLineWidth(4.5);
+
+////lineeeeee22222
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-160.0f, -80.0f);
+    glVertex2f(-120.0f, -80.0f);
+glEnd();
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-60.0f, -80.0f);
+    glVertex2f(-20.0f, -80.0f);
+glEnd();
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);///4th lineee
+    glColor3ub(255, 255, 255);
+    glVertex2f(40.0f, -80.0f);
+    glVertex2f(80.0f, -80.0f);
+glEnd();
+
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(120.0f, -80.0f);
+    glVertex2f(160.0f, -80.0f);
+glEnd();
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(200.0f, -80.0f);
+    glVertex2f(240.0f, -80.0f);
+glEnd();
+glLineWidth(4.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(280.0f, -80.0f);
+    glVertex2f(320.0f, -80.0f);
+glEnd();
+
+glLineWidth(4.5);
+
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(360.0f, -80.0f);
+    glVertex2f(400.0f, -80.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(440.0f, -80.0f);
+    glVertex2f(480.0f, -80.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(520.0f, -80.0f);
+    glVertex2f(560.0f, -80.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(590.0f, -80.0f);
+    glVertex2f(600.0f, -80.0f);
+glEnd();
+
+
+///***********************************End Main road Dot lineeeee***********************************************************************
+
+
+
+
+  glBegin(GL_POLYGON); ///opposite road Green partssssssss
+
+     glColor3ub(0,255,42);
+
+
+
+    glVertex2f(-400.0f, -200.0f);
+    glVertex2f(-400.0f, -150.0f);
+    glVertex2f(600.0f, -150.0f);
+    glVertex2f(600.0f, -200.0f);
+glEnd();
+
+
+glLineWidth(8.5);
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-350.0f, -300.0f);
+    glVertex2f(-400.0f, -300.0f);
+glEnd();
+
+
+
+
+glBegin(GL_LINES);
+    glColor3ub(78, 42, 20);
+    glVertex2f(400.0f, -200.0f);
+    glVertex2f(400.0f, -150.0f);
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0);
+
+
+    glVertex2f(400.0f, -50.0f);
+    glVertex2f(360.0f, -150.0f);
+    glVertex2f(440.0f, -150.0f);
+
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(78, 42, 20);
+    glVertex2f(150.0f, -195.0f);
+    glVertex2f(150.0f, -150.0f);
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(0, 100, 0);
+
+
+    glVertex2f(150.0f, -110.0f);
+    glVertex2f(180.0f, -150.0f);
+    glVertex2f(120.0f, -150.0f);
+
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0);
+
+
+
+    glVertex2f(120.0f, -140.0f);
+    glVertex2f(180.0f, -140.0f);
+    glVertex2f(150.0f, -85.0f);
+
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0);
+
+
+    glVertex2f(120.0f, -120.0f);
+    glVertex2f(180.0f, -120.0f);
+    glVertex2f(150.0f, -60.0f);
+
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(78, 42, 20);
+    glVertex2f(-200.0f, -200.0f);
+    glVertex2f(-200.0f, -160.0f);
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(26,153,0);
+
+
+    glVertex2f(-220.0f, -150.0f);
+    glVertex2f(-240.0f, -160.0f);
+    glVertex2f(-160.0f, -160.0f);
+    glVertex2f(-180.0f, -150.0f);
+
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(34,204,0);
+
+
+    glVertex2f(-230.0f, -150.0f);
+    glVertex2f(-170.0f, -150.0f);
+    glVertex2f(-200.0f, -90.0f);
+
+glEnd();
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0);
+
+
+
+    glVertex2f(-230.0f, -120.0f);
+    glVertex2f(-200.0f, -60.0f);
+    glVertex2f(-170.0f, -120.0f);
+
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(128, 128, 128);
+    glVertex2f(-400.0f, -200.0f);
+    glVertex2f(-400.0f, -220.0f);
+    glVertex2f(600.0f, -220.0f);
+    glVertex2f(600.0f, -200.0f);
+glEnd();
+
+glLineWidth(10.5f);
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-300.0f, -200.0f);
+    glVertex2f(-300.0f, -220.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(-150.0f, -200.0f);
+    glVertex2f(-150.0f, -220.0f);
+glEnd();
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(0.0f, -200.0f);
+    glVertex2f(0.0f, -220.0f);
+glEnd();
+
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(150.0f, -200.0f);
+    glVertex2f(150.0f, -220.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(300.0f, -200.0f);
+    glVertex2f(300.0f, -220.0f);
+glEnd();
+
+
+glBegin(GL_LINES);
+    glColor3ub(255, 255, 255);
+    glVertex2f(450.0f, -200.0f);
+    glVertex2f(450.0f, -220.0f);
+glEnd();
+
+
+}
+
+//////////////////////////////////////////////////
+
+ void Skyvill()
+  {
+
+     glColor3ub(25,255,255); // Sky blue color
+glBegin(GL_POLYGON);
+
+// Define the four corners of the polygon
+glVertex2f(-400.0f, 350.0f); // Top-left
+glVertex2f(600.0f, 350.0f);  // Top-right
+glVertex2f(600.0f, 100.0f);  // Bottom-right
+glVertex2f(-400.0f, 100.0f); // Bottom-left
+
+glEnd();
+
+     //glFlush();
+  }
+
+
+  void Mountain()
+{
+    glColor3ub(0, 179, 0); // Mountain brown color
+
+
+glBegin(GL_POLYGON);///1st
+glVertex2f(-350.32f, 100.0f);
+glVertex2f(-251.9681729611208f, 216.113406841094f);
+glVertex2f(-170.0627858499472f, 101.111809456279f);
+glEnd();
+
+// Second Mountain Polygon
+glBegin(GL_POLYGON);///2nd
+glVertex2f(50.0f, 100.0f);
+glVertex2f(200.0f, 250.0f);
+glVertex2f(350.0f, 100.0f);
+glEnd();
+
+// Third Mountain Polygon
+glBegin(GL_POLYGON);///3rd
+glVertex2f(350.0f, 100.0f);
+glVertex2f(500.0f, 300.0f);
+glVertex2f(600.0f, 100.0f);
+glEnd();
+
+glBegin(GL_POLYGON);///4thhhhhhhhhhh
+    glColor3ub(0, 255, 0); // Set the color to green
+    glVertex2f(-240.0f, 100.0f);   // First vertex
+    glVertex2f(-60.0f, 300.0f);    // Second vertex
+    glVertex2f(140.0f, 100.0f);     // Third vertex
+glEnd();
+
+glBegin(GL_POLYGON);////5th hillll
+    glColor3ub(0, 204, 0); // Set the color to deep green
+    glVertex2f(-400.0f, 240.0f);   // First vertex
+    glVertex2f(-240.0f, 100.0f);   // Second vertex
+    glVertex2f(-400.0f, 100.0f);   // Third vertex
+glEnd();
+
+
+
+}
+
+void sunvill()
+{
+
+
+    glBegin(GL_POLYGON); // wheel
+float x36 =23.6021626909541f;
+float y36 =283.4953046841167f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255, 255, 0); // Wheel color: black
+    float r = 40.48f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x36;
+    float y = r * sin(a) + y36;
+    glVertex2f(x, y);
+}
+glEnd();
+//glFlush();
+}
+
+void Cloudvill()
+{
+    glPushMatrix();
+    glTranslatef(_moveCloudV, 0.0f, 0.0f); // Move the cloud horizontally
+    glBegin(GL_POLYGON); ///cloudd1
+float x37 = -334.33f; // Center x-coordinate
+float y37 = 262.50f;  // Center y-coordinate
+float r = 32.73f;   // Radius
+
+for (int i = 0; i < 500; i++)
+{
+    glColor3ub(255, 255, 255); // Wheel color: white
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x37;
+    float y = r * sin(a) + y37;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON);
+float x39 = -269.58f; // Center x-coordinate
+float y39 = 232.09f;  // Center y-coordinate
+
+for (int i = 0; i < 500; i++)
+{
+    glColor3ub(255, 255, 255); // Wheel color: white
+    float r = 38;
+
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x39;
+    float y = r * sin(a) + y39;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glBegin(GL_POLYGON); // wheel
+float x36 =-285.27f;
+float y36 =299.77f;
+for (int i = 0; i < 500; i++)
+{
+    glColor3ub(255, 255, 255); // Wheel color: black
+    float r = 43.13f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x36;
+    float y = r * sin(a) + y36;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON); //
+float x38 =-198.41f;
+float y38=240.86f;
+for (int i = 0; i < 500; i++)
+{
+    glColor3ub(255, 255, 255); // Wheel color: black
+    float r = 46.6f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x38;
+    float y = r * sin(a) + y38;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON); // wheel
+float x40 =-218.56f;
+float y40 =294.87f;
+for (int i = 0; i < 500; i++)
+{
+    glColor3ub(255, 255, 255); // Wheel color: black
+    float r = 45.5f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x40;
+    float y = r * sin(a) + y40;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glBegin(GL_POLYGON); // wheel
+float x44 =173.72f;
+float y44 =273.44f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255, 255, 255); // Wheel color: black
+    float r = 37.79f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x44;
+    float y = r * sin(a) + y44;
+    glVertex2f(x, y);
+}
+glEnd();
+
+
+glBegin(GL_POLYGON); // wheel
+float x45 =160.0f;
+float y45 =320.0f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255,255,255); // Wheel color: black
+    float r = 32.24f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x45;
+    float y = r * sin(a) + y45;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glBegin(GL_POLYGON); // wheel
+float x46 =129.010f;
+float y46 =313.38f;
+for (int i = 0; i < 300; i++)
+{
+    glColor3ub(255, 255, 255); // Wheel color: black
+    float r = 31.95f;
+    float pi = 3.1416f;
+    float a = (i * 2 * pi) / 300;
+    float x = r * cos(a) + x46;
+    float y = r * sin(a) + y46;
+    glVertex2f(x, y);
+}
+glEnd();
+
+glPopMatrix();
+}
+
+void watervill()
+{
+
+
+// Set the color for the polygon (light blue)
+glColor3ub(0, 191, 255); // RGB for a water-like color
+
+// Start drawing the polygon
+glBegin(GL_POLYGON);
+
+// Define the vertices of the polygon
+glVertex2f(150.0f, 100.0f);
+glVertex2f(126.0f, 100.0f);
+glVertex2f(10.0f, -200.0f);
+glVertex2f(-50.08f, -200.17f);
+
+// End drawing the polygon
+glEnd();
+
+
+
+// Set the line width
+glLineWidth(2.5);
+
+// Start drawing lines
+glBegin(GL_LINES);
+
+// Set the color to white
+glColor3ub(255, 255, 255); // White color
+
+// Define the endpoints of the line
+glVertex2f(140.0f, 100.0f);
+glVertex2f(95.0f, 145.0f);
+
+// End drawing lines
+glEnd();
+
+
+
+}
+ void groundvill()
+ {
+
+     glColor3ub(85,255,51); // Green color
+glBegin(GL_POLYGON);
+
+// Define the four corners of the polygon using the new coordinates
+glVertex2f(-400.0f, 100.0f);    // Top-left
+glVertex2f(600.0f, 100.0f);     // Top-right
+glVertex2f(600.0f, -400.0f);    // Bottom-right
+glVertex2f(-400.0f, -400.0f);   // Bottom-left
+
+glEnd();
+
+
+
+
+ }
+void watervill2()
+{
+
+    glColor3ub(64, 164, 223); // Water color (light blue)
+glBegin(GL_POLYGON);
+
+// Define the four corners of the polygon using the water region coordinates
+glVertex2f(-400.0f, -400.0f);   // Bottom-left
+glVertex2f(-400.0f, -200.0f);   // Top-left
+glVertex2f(600.0f, -200.0f);    // Top-right
+glVertex2f(600.0f, -400.0f);    // Bottom-right
+
+glEnd();
+
+}
+
+
+void treevill()
+{
+glLineWidth(4.5); // Set line width (adjust as needed)
+
+// Draw a line between the specified points
+glBegin(GL_LINES);
+    glColor3ub(139, 69, 19); // Set the color to wood (brown)
+    glVertex2f(-350.0f, 0.0f);    // Starting point (x, y)
+    glVertex2f(-350.0f, -80.0f);  // Ending point (x, y)
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 100, 0); // Set the color to deep green
+    glVertex2f(-352.0f, 40.0f);   // First vertex
+    glVertex2f(-390.0f, 0.0f);    // Second vertex
+    glVertex2f(-315.0f, 0.0f);    // Third vertex
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0); // Set the color to green
+    glVertex2f(-380.0f, 20.0f);   // First vertex
+    glVertex2f(-325.0f, 20.0f);   // Second vertex
+    glVertex2f(-355.0f, 80.0f);   // Third vertex
+glEnd();
+
+
+
+
+//////////////////2nd trees
+
+
+glLineWidth(4.5); // Set line width (adjust as needed)
+
+// Draw a line between the specified points
+glBegin(GL_LINES);
+    glColor3ub(139, 69, 19); // Set the color to wood (brown)
+    glVertex2f(120.0f, -60.0f);  // Starting point (x, y)
+    glVertex2f(120.0f, 0.0f);    // Ending point (x, y)
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 100, 0); // Set the color to deep green
+    glVertex2f(140.0f, 0.0f);   // First vertex
+    glVertex2f(100.0f, 0.0f);   // Second vertex
+    glVertex2f(120.0f, 40.0f);  // Third vertex
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0); // Set the color to green
+    glVertex2f(100.0f, 20.0f);   // First vertex
+    glVertex2f(140.0f, 20.0f);   // Second vertex
+    glVertex2f(120.0f, 80.0f);   // Third vertex
+glEnd();
+
+
+
+///3rd treeee
+
+
+
+
+glLineWidth(5.5); // Set line width (adjust as needed)
+
+// Set the color to deep wood (RGB: 101, 67, 33)
+glColor3ub(101, 67, 33);
+
+// Draw a line between the specified points
+glBegin(GL_LINES);
+    glVertex2f(250.0f, 40.0f);   // Starting point (x, y)
+    glVertex2f(250.0f, -20.0f);  // Ending point (x, y)
+glEnd();
+
+
+
+glColor3ub(0, 100, 0); // Dark green
+
+    glBegin(GL_POLYGON);
+        // Define the vertices of the polygon
+        glVertex2f(225.0f, 40.0f);  // Point A
+        glVertex2f(275.0f, 40.0f);  // Point B
+        glVertex2f(250.0f, 70.0f);  // Point C
+    glEnd();
+
+
+    glColor3ub(0, 100, 0); // Dark green
+
+    glBegin(GL_POLYGON);
+        // Define the vertices of the polygon
+        glVertex2f(220.0f, 50.0f);  // Point A
+        glVertex2f(280.0f, 50.0f);  // Point B
+        glVertex2f(250.0f, 100.0f); // Point C
+    glEnd();
+
+
+//4th tree
+glLineWidth(4.5); // Set line width (adjust as needed)
+
+// Draw a line between the specified points
+glBegin(GL_LINES);
+    glColor3ub(139, 69, 19); // Set the color to wood (brown)
+    glVertex2f(440.0f, -80.0f);  // Starting point (x, y)
+    glVertex2f(440.0f, 20.0f);   // Ending point (x, y)
+glEnd();
+
+//leaf
+glColor3ub(0, 100, 0); // Dark green
+
+glBegin(GL_POLYGON);
+    // Define the vertices of the polygon
+    glVertex2f(400.0f, 20.0f);  // Point A
+    glVertex2f(480.0f, 20.0f);  // Point B
+    glVertex2f(460.0f, 40.0f);  // Point C
+    glVertex2f(420.0f, 40.0f);  // Point D
+glEnd();
+
+glColor3ub(0, 100, 0); // Dark green
+
+glBegin(GL_POLYGON);
+    // Define the vertices of the polygon
+    glVertex2f(400.0f, 40.0f);  // Point A
+    glVertex2f(480.0f, 40.0f);  // Point B
+    glVertex2f(440.0f, 60.0f);  // Point C
+glEnd();
+
+}
+
+   void housevill()
+   {
+
+       glColor3ub(255, 153, 51); // Wood color (brown)
+glBegin(GL_POLYGON);
+
+// Define the four corners of the polygon
+glVertex2f(-280.0f, -20.0f);    // Bottom-left
+glVertex2f(-200.0f, -20.0f);    // Bottom-right
+glVertex2f(-220.0f, 0.0f);      // Top-right
+glVertex2f(-300.0f, 0.0f);      // Top-left
+
+glEnd();
+
+glColor3ub(139, 69, 19); // Wood color (brown)
+glBegin(GL_POLYGON);
+
+// Define the five corners of the polygon
+glVertex2f(-320.0f, -20.0f);    // First point
+glVertex2f(-300.0f, 0.0f);      // Second point
+glVertex2f(-280.0f, -20.0f);    // Third point
+glVertex2f(-280.0f, -70.0f);    // Fourth point
+glVertex2f(-320.0f, -60.0f);    // Fifth point
+
+glEnd();
+
+glColor3ub(255, 178, 102); // Wood color (brown)
+glBegin(GL_POLYGON);
+
+// Define the four corners of the polygon
+glVertex2f(-280.0f, -20.0f);    // Top-left
+glVertex2f(-200.0f, -20.0f);    // Top-right
+glVertex2f(-200.0f, -60.0f);    // Bottom-right
+glVertex2f(-280.0f, -70.0f);    // Bottom-left
+
+glEnd();
+
+glColor3ub(255, 255, 255); // White color
+glBegin(GL_POLYGON);
+
+// Define the four corners of the polygon
+glVertex2f(-250.0f, -40.0f);      // Top-left
+glVertex2f(-230.0f, -40.0f);      // Top-right
+glVertex2f(-229.76f, -63.72f);    // Bottom-right
+glVertex2f(-249.84f, -66.23f);    // Bottom-left
+
+glEnd();
+
+
+
+glLineWidth(16.5);
+glColor3ub(255, 255, 255); // White color
+glBegin(GL_LINES);
+
+// Define the two endpoints of the line
+glVertex2f(-300.0f, -20.0f);   // Starting point
+glVertex2f(-300.0f, -40.0f);   // Ending point
+
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(139, 69, 19); // Set the color to wood (brown)
+    glVertex2f(180.0f, -30.0f);   // First vertex
+    glVertex2f(260.0f, -30.0f);   // Second vertex
+    glVertex2f(240.0f, 0.0f);     // Third vertex
+    glVertex2f(160.0f, 0.0f);     // Fourth vertex
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255,166,77); // Set the color to wood (brown)
+    glVertex2f(140.0f, -60.0f);   // First vertex
+    glVertex2f(180.0f, -60.0f);   // Second vertex
+    glVertex2f(180.0f, -30.0f);   // Third vertex
+    glVertex2f(160.0f, 0.0f);     // Fourth vertex
+    glVertex2f(140.0f, -20.0f);   // Fifth vertex
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(181, 101, 29); // Set the color to light brown
+    glVertex2f(260.0f, -30.0f);   // First vertex
+    glVertex2f(180.0f, -30.0f);   // Second vertex
+    glVertex2f(180.0f, -60.0f);   // Third vertex
+    glVertex2f(260.0f, -60.0f);   // Fourth vertex
+glEnd();
+
+glLineWidth(12.5); // Set line width (adjust as needed)
+
+// Set the color to light brown (RGB: 210, 180, 140)
+glColor3ub(210, 180, 140);
+
+// Draw a line between the specified points
+glBegin(GL_LINES);
+    glVertex2f(160.0f, -20.0f);  // Starting point (x, y)
+    glVertex2f(160.0f, -40.0f);  // Ending point (x, y)
+glEnd();
+
+
+
+glLineWidth(20.5); // Set line width (adjust as needed)
+
+// Set the color to light brown (RGB: 210, 180, 140)
+glColor3ub(210, 180, 140);
+
+// Draw a line between the specified points
+glBegin(GL_LINES);
+    glVertex2f(220.0f, -40.0f);  // Starting point (x, y)
+    glVertex2f(220.0f, -60.0f);  // Ending point (x, y)
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(101, 67, 33); // Set the color to deep wood
+    glVertex2f(260.0f, -60.0f); // Point 1
+    glVertex2f(260.0f, 0.0f);    // Point 2
+    glVertex2f(280.0f, 20.0f);   // Point 3
+    glVertex2f(300.0f, -20.0f);  // Point 4
+    glVertex2f(300.0f, -60.0f);  // Point 5
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 165, 0); // Set the color to bright orange
+    glVertex2f(280.0f, 20.0f);   // Point 1
+    glVertex2f(380.0f, 20.0f);   // Point 2
+    glVertex2f(400.0f, -20.0f);  // Point 3
+    glVertex2f(300.0f, -20.0f);  // Point 4
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255,128,128); // Set the color to bright orange
+    glVertex2f(300.0f, -60.0f); // Point 1
+    glVertex2f(300.0f, -20.0f); // Point 2
+    glVertex2f(400.0f, -20.0f); // Point 3
+    glVertex2f(400.0f, -60.0f); // Point 4
+glEnd();
+
+
+
+
+
+//new house
+//body
+glBegin(GL_POLYGON);
+    glColor3ub(194, 178, 128); // Set the color to sand
+    glVertex2f(70.0f, -190.0f); // Point 1
+    glVertex2f(70.0f, -130.0f);  // Point 2
+    glVertex2f(150.0f, -130.0f); // Point 3
+    glVertex2f(150.0f, -190.0f); // Point 4
+glEnd();
+
+//chad
+glBegin(GL_POLYGON);
+    glColor3ub(178, 190, 181); // Set the color to ash
+    glVertex2f(60.0f, -130.0f); // Point 1
+    glVertex2f(110.0f, -80.0f);  // Point 2
+    glVertex2f(160.0f, -130.0f); // Point 3
+glEnd();
+
+//door
+glBegin(GL_POLYGON);
+    glColor3ub(139, 69, 19); // Set the color to brown
+    glVertex2f(100.0f, -190.0f); // Point 1
+    glVertex2f(100.0f, -170.0f);  // Point 2
+    glVertex2f(120.0f, -170.0f);  // Point 3
+    glVertex2f(120.0f, -190.0f);  // Point 4
+glEnd();
+
+//window
+//1st
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 255); // Set the color to cyan
+    glVertex2f(80.0f, -160.0f); // Point 1
+    glVertex2f(80.0f, -140.0f);  // Point 2
+    glVertex2f(100.0f, -140.0f); // Point 3
+    glVertex2f(100.0f, -160.0f); // Point 4
+glEnd();
+
+//2nd
+glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 255); // Set the color to cyan
+    glVertex2f(120.0f, -160.0f); // Point 1
+    glVertex2f(120.0f, -140.0f);  // Point 2
+    glVertex2f(140.0f, -140.0f);  // Point 3
+    glVertex2f(140.0f, -160.0f);  // Point 4
+glEnd();
+
+
+// Set the line width
+glLineWidth(9.5);
+
+// Start drawing lines
+glBegin(GL_LINES);
+
+// Set the color to white
+glColor3ub(255, 255, 255);
+
+// Define the endpoints of the line
+glVertex2f(350.0f, -30.0f);
+glVertex2f(350.0f, -60.0f);
+
+// End drawing lines
+glEnd();
+
+
+
+
+// Set the line width
+glLineWidth(7.5);
+
+// Start drawing lines
+glBegin(GL_LINES);
+
+// Set the color to white
+glColor3ub(255, 255, 255);
+
+// Define the endpoints of the line
+glVertex2f(280.0f, -30.0f);
+glVertex2f(280.0f, -10.0f);
+
+// End drawing lines
+glEnd();
+
+
+
+////House5
+
+// Set the color for the polygon (yellow)
+glColor3ub(255, 255, 0); // RGB for yellow
+
+// Start drawing the polygon
+glBegin(GL_POLYGON);
+
+// Define the vertices of the polygon
+glVertex2f(-80.0f, 40.0f);
+glVertex2f(40.0f, 40.0f);
+glVertex2f(-20.0f, 80.0f);
+
+// End drawing the polygon
+glEnd();
+
+
+// Set the color for the polygon (light pink)
+glColor3ub(255, 182, 193); // RGB for light pink
+
+// Start drawing the polygon
+glBegin(GL_POLYGON);
+
+// Define the vertices of the polygon
+glVertex2f(-70.0f, 40.0f);
+glVertex2f(-70.0f, 0.0f);
+glVertex2f(30.0f, 0.0f);
+glVertex2f(30.0f, 40.0f);
+
+// End drawing the polygon
+glEnd();
+
+
+
+// Set the color for the polygon (white)
+glColor3ub(255, 255, 255); // RGB for white
+
+// Start drawing the polygon
+glBegin(GL_POLYGON);
+
+// Define the vertices of the polygon
+glVertex2f(-30.0f, 0.0f);
+glVertex2f(-15.0f, 0.0f);
+glVertex2f(-15.0f, 30.0f);
+glVertex2f(-30.0f, 30.0f); // Closing the polygon
+
+// End drawing the polygon
+glEnd();
+
+
+}
+
+
+float position = 0.0f;
+float speed = 0.8f;
+   void boat()
+   {
+       glPushMatrix();
+    glTranslatef(position,0.0f, 0.0f); // Move the cloud horizontally
+    //glTranslatef(bx,0,0);
+       glBegin(GL_POLYGON);
+    glColor3ub(0, 0, 0); // Set the color to black
+    glVertex2f(100.0f, -300.0f);  // First vertex
+    glVertex2f(450.0f, -300.0f);  // Second vertex
+    glVertex2f(400.0f, -350.0f);  // Third vertex
+    glVertex2f(150.0f, -350.0f);  // Fourth vertex
+    glEnd();
+
+
+
+    glBegin(GL_POLYGON);
+    glColor3ub(78, 255, 255); // Set the color to black
+    glVertex2f(200.0f, -250.0f);  // First vertex
+    glVertex2f(350.0f, -250.0f);  // Second vertex
+    glVertex2f(400.0f, -300.0f);  // Third vertex
+    glVertex2f(250.0f, -300.0f);  // Fourth vertex
+    glEnd();
+
+
+
+    glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 78); // Set the color to black
+    glVertex2f(200.0f, -250.0f);  // First vertex
+    glVertex2f(250.0f, -300.0f);  // Second vertex
+    glVertex2f(150.0f, -300.0f);  // Third vertex
+glEnd();
+
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 0); // Set the color to yellow
+    glVertex2f(240.0f, -230.0f);   // First vertex
+    glVertex2f(340.0f, -230.0f);   // Second vertex
+    glVertex2f(360.0f, -160.0f);   // Third vertex
+    glVertex2f(280.0f, -120.0f);   // Fourth vertex
+glEnd();
+
+glLineWidth(6.5); // Set line width (adjust as needed)
+
+// Draw a line between the specified points
+glBegin(GL_LINES);
+    glColor3ub(101, 67, 33); // Set the color to deep wood
+    glVertex2f(300.0f, -230.0f);  // Starting point (x, y)
+    glVertex2f(300.0f, -250.0f);  // Ending point (x, y)
+glEnd();
+
+
+glBegin(GL_POLYGON);///2nd boat
+    glColor3ub(0, 0, 0); // Set the color to black
+    glVertex2f(-280.0f, -260.0f);   // First vertex
+    glVertex2f(-80.0f, -260.0f);    // Second vertex
+    glVertex2f(-120.0f, -300.0f);   // Third vertex
+    glVertex2f(-240.0f, -300.0f);   // Fourth vertex
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255); // Set the color to black
+    glVertex2f(-240.0f, -260.0f);   // First vertex
+    glVertex2f(-220.0f, -220.0f);    // Second vertex
+    glVertex2f(-140.0f, -220.0f);    // Third vertex
+    glVertex2f(-100.0f, -260.0f);    // Fourth vertex
+glEnd();
+
+
+
+glPopMatrix();
+
+}
+
+void windmillvill()
+{
+    //1st
+    glBegin(GL_POLYGON);
+    glColor3ub(169, 169, 169); // Set the color to gray
+    glVertex2f(-140.0f, -100.0f);  // First vertex
+    glVertex2f(-140.0f, 20.0f);    // Second vertex
+    glVertex2f(-120.0f, 20.0f);    // Third vertex
+    glVertex2f(-120.0f, -100.0f);  // Fourth vertex
+glEnd();
+
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 0, 0); // Set the color to black
+    glVertex2f(-140.0f, 20.0f);  // First vertex
+    glVertex2f(-130.0f, 30.0f);  // Second vertex
+    glVertex2f(-120.0f, 20.0f);  // Third vertex
+glEnd();
+
+//pakha
+//middle
+glBegin(GL_POLYGON);
+    glColor3ub(183, 65, 14); // Set the color to rust
+    glVertex2f(-130.0f, 30.0f);  // First vertex
+    glVertex2f(-130.0f, 80.0f);  // Second vertex
+    glVertex2f(-120.0f, 40.0f);  // Third vertex
+glEnd();
+
+//left
+glBegin(GL_POLYGON);
+    glColor3ub(183, 65, 14); // Set the color to rust
+    glVertex2f(-130.0f, 30.0f);  // First vertex
+    glVertex2f(-140.0f, 40.0f);  // Second vertex
+    glVertex2f(-180.0f, 30.0f);  // Third vertex
+glEnd();
+
+//right
+glBegin(GL_POLYGON);
+    glColor3ub(183, 65, 14); // Set the color to rust
+    glVertex2f(-130.0f, 30.0f);  // First vertex
+    glVertex2f(-80.0f, 30.0f);   // Second vertex
+    glVertex2f(-110.0f, 20.0f);  // Third vertex
+glEnd();
+
+//2nd
+glBegin(GL_POLYGON);
+    glColor3ub(169, 169, 169); // Set the color to gray
+    glVertex2f(540.0f, -70.0f);  // First vertex
+    glVertex2f(540.0f, 10.0f);    // Second vertex
+    glVertex2f(550.0f, 10.0f);    // Third vertex
+    glVertex2f(550.0f, -70.0f);   // Fourth vertex
+glEnd();
+
+glBegin(GL_POLYGON);
+    glColor3ub(0, 0, 0); // Set the color to black
+    glVertex2f(540.0f, 10.0f);   // First vertex
+    glVertex2f(545.0f, 15.0f);   // Second vertex
+    glVertex2f(550.0f, 10.0f);   // Third vertex
+glEnd();
+
+//pakha
+//middle
+glBegin(GL_POLYGON);
+    glColor3ub(183, 65, 14); // Set the color to rust
+    glVertex2f(545.0f, 15.0f);   // First vertex
+    glVertex2f(545.0f, 60.0f);   // Second vertex
+    glVertex2f(550.0f, 20.0f);   // Third vertex
+glEnd();
+
+//left
+glBegin(GL_POLYGON);
+    glColor3ub(183, 65, 14); // Set the color to rust
+    glVertex2f(545.0f, 15.0f);   // First vertex
+    glVertex2f(540.0f, 20.0f);   // Second vertex
+    glVertex2f(510.0f, 15.0f);   // Third vertex
+glEnd();
+
+//right
+glBegin(GL_POLYGON);
+    glColor3ub(183, 65, 14); // Set the color to rust
+    glVertex2f(545.0f, 15.0f);   // First vertex
+    glVertex2f(555.0f, 20.0f);   // Second vertex
+    glVertex2f(585.0f, 15.0f);   // Third vertex
+glEnd();
+
+}
+
+void display2()
+
+ {
+
+glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer with current clearing color
+
+
+  Skyvill();
+  Mountain();
+  sunvill();
+  Cloudvill();
+   groundvill();
+   housevill();
+    watervill();
+    treevill();
+
+   watervill2();
+   boat();
+   windmillvill();
+///  Boat2();
+
+    glFlush(); // Render now
+
+}
+
+
+
+void display() {
+	glClear(GL_COLOR_BUFFER_BIT);   // Clear the color buffer with current clearing color
+
+     sky();
+
+     cloud();
+     buildings();
+     trees();
+     newroad2();
+     road();
+
+     trees();
+
+     sun();
+     breanch();
+     //bus2();
+     bus3();
+
+
+	glFlush();  // Render now
+}
+
+void updateCloudC(int value){
+     _moveCloudC += 1.9f;
+     if(_moveCloudC > 500.0f){
+        _moveCloudC = -600.0f;
+     }
+     glutPostRedisplay();
+     glutTimerFunc(20,updateCloudC,0);
+}
+
+void updateBusC(int value)
+
+{
+    if(position1 >400.0f)
+        position1 = -600.0f;
+
+    position1 += speed1;
+
+
+      glutPostRedisplay();
+     glutTimerFunc(20,updateBusC,0);
+}
+
+void updateCloudV(int value)
+{
+    _moveCloudV +=1.9f;
+    if(_moveCloudV >900.0f){
+        _moveCloudV = -600.0f;
+    }
+    glutPostRedisplay();
+     glutTimerFunc(20,updateCloudV,0);
+}
+void updateBoat(int value){
+       if(position >900.0)
+        position = -600.0f;
+
+    position += speed;
+
+	glutPostRedisplay();
+
+
+	glutTimerFunc(20, updateBoat, 0);
+}
+
+void handleMouse(int button, int state, int x, int y) {
+	if (button == GLUT_LEFT_BUTTON)
+	{	speed += 0.1f;
+			}
+if (button == GLUT_RIGHT_BUTTON)
+	{speed -= 0.1f;   }
+glutPostRedisplay();}
+
+
+
+void handleMouse3(int button, int state, int x, int y)
+ {
+	if (button == GLUT_LEFT_BUTTON)
+	{	speed1 += 0.1f;
+			}
+if (button == GLUT_RIGHT_BUTTON)
+	{speed1 -= 0.1f;   }
+glutPostRedisplay();}
+
+
+
+void handleKeypress(unsigned char key, int x, int y)
+
+{
+
+    switch ((key))
+
+    {
+
+
+    case 'n':
+
+        glutDisplayFunc(display2);
+        glutPostRedisplay();
+        break;
+
+
+         case 'b':
+
+        glutDisplayFunc(display);
+        glutPostRedisplay();
+        break;
+
+
+
+    }
+}
+
+
+
+int main(int argc, char** argv)
+{
+	glutInit(&argc, argv);          // Initialize GLUT
+	glutInitWindowSize(900,500);//the window's initial width & height
+	glutCreateWindow(" Dhaka 300 feet Highway City Life");  // Create window with the given title
+
+	glutInitWindowPosition(50, 50);
+
+	// Position the window's initial top-left corner
+	glutDisplayFunc(display);
+	glutKeyboardFunc(handleKeypress);
+	//glutMouseFunc(handleMouse);
+	 glutMouseFunc(handleMouse3);
+
+	gluOrtho2D(-400,600,-400,350);      // Register callback handler for window re-paint event
+	initGL();
+    glutTimerFunc(20, updateCloudC, 0);
+    glutTimerFunc(20, updateBusC, 0);
+    glutTimerFunc(20, updateCloudV, 0);
+    glutTimerFunc(20, updateBoat, 0);
+
+	glutMainLoop();                 // Enter the event-processing loop
+	return 0;
+}
